@@ -57,6 +57,53 @@ canvas{width:100%;height:clamp(340px,62vh,680px);min-height:340px;border-radius:
  .panel button{max-width:100%;white-space:normal}
 }
 @media(prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
+
+/* Mobile-first polish pass: compact HUD, shorter playfield, unified pixel UI */
+body{overflow-x:hidden;overflow-y:auto;background:#10251f}
+header{position:relative;display:grid;grid-template-columns:1fr auto;gap:8px;padding:10px 12px;align-items:center}
+header strong{font-size:clamp(17px,4.5vw,24px);letter-spacing:.5px}
+.hud{grid-column:1/-1;display:grid;grid-template-columns:1fr 1fr auto;gap:8px;width:100%}
+.pill{display:flex;justify-content:center;align-items:center;gap:6px;padding:7px 9px;min-height:38px;font-size:13px}
+#saveBtn{min-height:38px;padding:7px 12px}
+main{padding:10px;gap:12px}
+main>section{gap:10px}
+#worldWrap{border-width:3px;border-radius:10px;box-shadow:0 5px 0 #091b15,0 10px 24px #06160f66}
+canvas{height:clamp(270px,43svh,470px);min-height:270px;max-height:470px}
+#hint{max-width:calc(100% - 24px);font-size:11px;line-height:1.4;padding:8px 10px;left:9px;top:9px}
+#interact{min-height:39px;padding:9px 12px;font-size:11px;right:9px;bottom:9px}
+.controls{padding:9px;gap:10px;border-radius:10px;align-items:center}
+.dpad{grid-template-columns:36px 36px 36px;grid-template-rows:34px 34px;gap:3px}
+.dpad button{min-height:34px;padding:0;border-width:2px;box-shadow:inset 0 0 0 1px #d49a51,0 2px 0 #25190f}
+.actionrow{gap:6px;align-items:center}
+.actionrow button{min-height:38px;padding:8px 10px;font-size:11px;border-width:2px;box-shadow:inset 0 0 0 1px #d49a51,0 3px 0 #25190f}
+.bottom{grid-template-columns:repeat(5,minmax(0,1fr));gap:6px}
+.bottom button{min-height:42px;padding:7px 3px;font-size:10px;line-height:1.2;border-width:2px;box-shadow:inset 0 0 0 1px #d49a51,0 3px 0 #25190f;overflow-wrap:anywhere}
+.panel{border-width:2px;border-radius:10px;padding:14px;box-shadow:0 4px 0 #091b15}
+.panel h2{font-size:17px;margin-bottom:9px}
+.panel p{font-size:13px;line-height:1.55;margin:7px 0}
+.panel button{min-height:38px;margin:4px 4px 4px 0;padding:8px 10px;font-size:11px;border-width:2px;box-shadow:inset 0 0 0 1px #d49a51,0 3px 0 #25190f}
+#welcome{margin-top:0}
+@media(min-width:900px){
+ header{display:flex;padding:12px 24px}
+ .hud{display:flex;width:auto;grid-column:auto}
+ main{padding:20px;gap:16px}
+ canvas{height:min(62vh,620px);min-height:390px;max-height:620px}
+ .side{top:82px}
+ .bottom{grid-template-columns:repeat(5,minmax(0,1fr))}
+ .bottom button{font-size:12px;padding:10px 5px}
+}
+@media(max-width:420px){
+ header{padding:9px}
+ .hud{grid-template-columns:1fr 1fr auto;gap:5px}
+ .pill{font-size:11px;padding:6px}
+ #saveBtn{font-size:11px;padding:6px 9px}
+ main{padding:8px;gap:9px}
+ canvas{height:40svh;min-height:260px;max-height:360px}
+ .bottom{grid-template-columns:repeat(3,minmax(0,1fr))}
+ .bottom button{font-size:10px;min-height:40px}
+ .controls{gap:6px}
+ .actionrow button{padding:7px;font-size:10px}
+}
 </style></head><body>
 <div id="loading"><div><div class="mount">▲ ▲ ▲</div><h1>SQUASH<br>PXI</h1><p>LOADING THE FOREST...</p><div id="loadbar"><div id="loadfill"></div></div><p class="sub">EXPLORE • COLLECT • BE YOU</p></div></div>
 <div id="app"><header><strong>▲ SQUASH PXI</strong><div class="hud"><span class="pill">🪙 <b id="coins">0</b></span><span class="pill">LV <b id="level">1</b></span><button id="saveBtn">SAVE</button></div></header>
