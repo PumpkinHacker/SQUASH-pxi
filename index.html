@@ -121,6 +121,77 @@ canvas{height:clamp(270px,43svh,470px);min-height:270px;max-height:470px}
  .side{display:grid}
  #welcome{display:block}
 }
+
+/* SQUASH PXI visual overhaul v2 */
+:root{--ink:#f9f2d8;--wood:#795033;--wood2:#bd8952;--green:#16382c;--gold:#f6d17b;--line:#426b4c}
+*{box-sizing:border-box}
+html{background:#0d211a;scroll-behavior:smooth}
+body{margin:0;color:var(--ink);background:linear-gradient(155deg,#173c2d 0%,#10281f 55%,#0b1d17 100%);font-family:ui-monospace,SFMono-Regular,Menlo,monospace;overflow-x:hidden}
+button{border:2px solid #c08a4e;border-radius:9px;background:linear-gradient(180deg,#9a6337,#754627);color:#fff3d2;box-shadow:0 3px 0 #402719,inset 0 1px 0 #e0b578;padding:10px 12px;min-height:40px;font-weight:700;letter-spacing:.1px;transition:transform .12s,filter .12s}
+button:hover{filter:brightness(1.09)}
+button:active{transform:translateY(2px);box-shadow:0 1px 0 #402719,inset 0 1px 0 #e0b578}
+#app{min-height:100dvh;padding-bottom:20px}
+header{position:relative;display:flex;flex-wrap:wrap;gap:10px;align-items:center;padding:12px clamp(12px,2.4vw,28px);background:#153629;border-bottom:2px solid #426a4b;box-shadow:0 5px 18px #06171066}
+header strong{font-size:clamp(18px,2.2vw,26px);letter-spacing:1px;color:#fff5d7}
+.hud{display:flex;align-items:center;gap:8px;margin-left:auto}
+.pill{border:1px solid #b9864b;border-radius:8px;background:#203b2c;padding:8px 12px;font-size:13px;white-space:nowrap}
+#saveBtn{min-height:38px;padding:7px 13px}
+main{width:min(1400px,100%);margin:0 auto;padding:14px;display:grid;grid-template-columns:minmax(0,1fr);gap:14px}
+main>section{min-width:0;display:flex;flex-direction:column;gap:12px}
+#worldWrap{border:3px solid #b78349;border-radius:13px;overflow:hidden;background:#568b49;box-shadow:0 5px 0 #091a13,0 12px 25px #07180f66}
+canvas{display:block;width:100%;height:clamp(270px,48svh,540px);min-height:270px;max-height:540px;image-rendering:pixelated;touch-action:manipulation}
+#hint{position:absolute;left:12px;top:12px;max-width:min(78%,440px);padding:9px 12px;border:1px solid #d6a85c;border-radius:8px;background:#15281feF;color:#fff4d5;font-size:clamp(10px,1.1vw,13px);line-height:1.5;box-shadow:0 3px 12px #07180f77}
+#interact{right:12px;bottom:12px;background:linear-gradient(#f2bd56,#d99435);color:#382417;border-color:#84502b;box-shadow:0 4px 0 #4d2b17,inset 0 1px 0 #ffe09a;min-height:42px;padding:10px 15px}
+.controls{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;padding:10px 12px;background:#18382b;border:1px solid #426b4b;border-radius:12px}
+.dpad{display:grid;grid-template-columns:38px 38px 38px;grid-template-rows:36px 36px;gap:4px}
+.dpad button{min-height:36px;padding:0;border-radius:7px}
+.actionrow{display:flex;gap:8px;flex-wrap:wrap}
+.actionrow button{min-height:40px;padding:8px 12px;font-size:12px}
+.bottom{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:8px}
+.bottom button{min-height:44px;padding:8px 5px;font-size:clamp(10px,1vw,13px);line-height:1.25;overflow-wrap:anywhere}
+.side{display:grid;gap:12px;align-content:start;min-width:0}
+.panel{background:linear-gradient(145deg,#1d4030,#173426);border:1px solid #b17d47;border-radius:12px;padding:16px;box-shadow:0 4px 0 #091a13}
+.panel h2{margin:0 0 10px;color:#ffdc83;font-size:clamp(16px,1.5vw,20px);line-height:1.35}
+.panel p{margin:8px 0;font-size:13px;line-height:1.65}
+.panel button{margin:4px 5px 4px 0;font-size:12px}
+.sub{color:#c5d6b8;font-size:12px;line-height:1.6}
+#loading{padding:24px}
+@media(min-width:920px){
+ main{grid-template-columns:minmax(0,1.75fr) minmax(280px,.75fr);padding:20px;gap:18px}
+ .side{position:sticky;top:16px}
+ canvas{height:min(62vh,620px);min-height:380px;max-height:620px}
+}
+@media(max-width:919px){
+ main{display:flex;flex-direction:column;padding:10px}
+ main>section{width:100%}
+ .side{display:block;position:static}
+ #welcome{display:none}
+ #welcome.open{display:block}
+ #panel{margin-top:0}
+ .bottom{grid-template-columns:repeat(3,minmax(0,1fr));gap:7px}
+ .bottom button{min-height:42px;font-size:11px}
+ canvas{height:clamp(250px,40svh,390px);min-height:250px;max-height:390px}
+}
+@media(max-width:420px){
+ header{padding:10px;gap:8px}
+ header strong{font-size:18px}
+ .hud{width:100%;margin:0;display:grid;grid-template-columns:1fr 1fr auto;gap:6px}
+ .pill{padding:7px 8px;font-size:11px;text-align:center}
+ #saveBtn{min-height:35px;padding:6px 10px;font-size:11px}
+ main{padding:8px;gap:10px}
+ canvas{height:36svh;min-height:245px;max-height:320px}
+ #hint{top:8px;left:8px;padding:7px 9px;font-size:10px;max-width:82%}
+ #interact{right:8px;bottom:8px;padding:8px 10px;font-size:10px;min-height:36px}
+ .controls{padding:9px;gap:8px}
+ .dpad{grid-template-columns:34px 34px 34px;grid-template-rows:32px 32px;gap:3px}
+ .dpad button{min-height:32px}
+ .actionrow{gap:6px}
+ .actionrow button{font-size:10px;padding:7px 8px;min-height:36px}
+ .bottom{grid-template-columns:repeat(3,minmax(0,1fr));gap:6px}
+ .bottom button{font-size:10px;min-height:39px;padding:7px 3px}
+ .panel{padding:13px}
+}
+@media(prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
 </style></head><body>
 <div id="loading"><div><div class="mount">▲ ▲ ▲</div><h1>SQUASH<br>PXI</h1><p>LOADING THE FOREST...</p><div id="loadbar"><div id="loadfill"></div></div><p class="sub">EXPLORE • COLLECT • BE YOU</p></div></div>
 <div id="app"><header><strong>▲ SQUASH PXI</strong><div class="hud"><span class="pill">🪙 <b id="coins">0</b></span><span class="pill">LV <b id="level">1</b></span><button id="saveBtn">SAVE</button></div></header>
